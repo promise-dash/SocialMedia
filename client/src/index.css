@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-color: black;
+  color: white;
+}
+.mantine-Paper-root, .mantine-Modal-content, .mantine-Modal-content{
+  background-color: black;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.365);
+  border-radius: 0.5rem;
+}
+.mantine-Modal-header{
+  background-color: black;
+}
+.mantine-Modal-body, .mantine-1q36a81 {
+  background-color: black;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
