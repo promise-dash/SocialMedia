@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className='w-full h-15 px-[2rem] py-[3px] flex items-center justify-between border-b-[1px] border-neutral-900'>
         <div className='flex basis-[10%] gap-2 items-center justify-center cursor-pointer'>
             <img src={Logo} width={30} height={30} alt='Logo'/>
-            <p className='text-xl'>SocialMedia</p>
+            <p className='text-xl'>BuzzHub</p>
         </div>
         <div className='flex basis-[60%] gap-3 px-5 py-3 rounded-3xl items-center bg-neutral-900'>
             <BiSearch/>

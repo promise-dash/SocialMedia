@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import CoverImage from "../assets/images/cover.jpg"
 import ProfileImage from "../assets/images/profileImg.jpg"
 
 const ProfileCard = () => {
 
-  const ProfilePage = false ;
+  const { pathname } = useLocation();
+  const isProfilePage = pathname === '/profile' ? true : false;
 
   return (
     <div className='flex flex-col relative gap-[1rem] rounded-lg border-[1px] border-neutral-900 overflow-x-clip'>
@@ -26,15 +27,14 @@ const ProfileCard = () => {
             <span>6,890</span>
             <span>Followings</span>
           </div>
-          <div className='h-[150%] border-l-[1px] border-neutral-700'></div>
+          <div className='h-[3rem] border-l-[1px] border-neutral-700'></div>
           <div className='flex flex-col gap-[0.4rem] items-center justify-center font-semibold'>
             <span>1</span>
             <span>Followers</span>
           </div>
-
-          {ProfilePage && (
+          {isProfilePage && (
             <>
-              <div className='h-[150%] border-l-[1px] border-neutral-700'></div>
+              <div className='h-[3rem] border-l-[1px] border-neutral-700'></div>
               <div className='flex flex-col gap-[0.4rem] items-center justify-center font-semibold'>
                 <span>3</span>
                 <span>Posts</span>
@@ -43,9 +43,9 @@ const ProfileCard = () => {
             </>
           )}
         </div>
-        {ProfilePage ? <hr className='mb-1'/> : <hr className='w-[85%] bottom-[1px] border-neutral-700'/>}
+        {isProfilePage ? <hr className='mb-3'/> : <hr className='w-[85%] bottom-[1px] border-neutral-700'/>}
       </div>
-      {ProfilePage ? "" : <Link to="/profile" className='font-bold self-center mb-[1rem] cursor-pointer'>My Profile</Link>}
+      {isProfilePage ? "" : <Link to="/profile" className='font-bold self-center mb-[1rem] cursor-pointer'>My Profile</Link>}
     </div>
   )
 }
