@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
         if (err) {
           return res.sendStatus(403);
         }
-        req.currentUserId = decoded.id;
+        req.userId = decoded.id;
         next();
       });
     } else {

@@ -10,6 +10,7 @@ const AuthForm = ({ loginPage }) => {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setUserData({...userData, [e.target.name]: e.target.value});
@@ -17,6 +18,7 @@ const AuthForm = ({ loginPage }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const response = await fetch(`http://localhost:3001/auth/${loginPage ? "login" : "register"}`, {
       method: "POST",
@@ -31,6 +33,7 @@ const AuthForm = ({ loginPage }) => {
       setErrorMessage(data.message);
     }
 
+    setLoading(false);
     if(data.token){
       window.localStorage.setItem('token', data.token);
       window.location.href="/";
@@ -56,7 +59,7 @@ const AuthForm = ({ loginPage }) => {
         className="w-full outline-none rounded-lg p-[15px] flex-1 border-[1px] bg-transparent border-neutral-700"/>
         {errorMessage && <small className="text-red-500">* {errorMessage} *</small>}
         
-        <button type="submit" className="mt-3 w-[6.2rem] h-[2.2rem] rounded-lg self-end bg-[#1d9bf0] hover:bg-[#0090f0] font-semibold">{loginPage ? "Log in" : "Sign Up"}</button>
+        <button disabled={loading} type="submit" className="mt-3 w-[6.2rem] h-[2.2rem] rounded-lg self-end bg-[#1d9bf0] hover:bg-[#0090f0] font-semibold">{loading ? "Loading..." : loginPage ? "Log in" : "Sign Up"}</button>
         <p className="text-[14px] font-light text-neutral-400">{loginPage ? "Don't have an account" : "Already have an account?"} <Link to={`/${loginPage ? "signup" : "login"}`} className="text-[#1d9bf0]">{!loginPage ? "Log in" : "Sign Up"}</Link></p>
     </form>
   )
